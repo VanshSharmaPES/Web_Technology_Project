@@ -1,9 +1,11 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Code, Database, Layout, Server } from 'lucide-react'
+// ADDED: Imports for dynamic header/footer
+import { Header as DynamicHeader } from '@/components/header-loggedin' 
+import { Footer } from '@/components/footer' 
 
 export default function SupportPage() {
   const techStack = [
@@ -30,11 +32,7 @@ export default function SupportPage() {
     {
       category: "Middleware",
       technologies: [
-        {
-          name: "Firebase",
-          description: "A platform for building web and mobile applications",
-          details: "We use Firebase for authentication, providing a secure and easy-to-implement user sign-up and login system. It offers features like email/password authentication, social media login, and more."
-        },
+        // REMOVED Firebase card
         {
           name: "Express",
           description: "A minimal and flexible Node.js web application framework",
@@ -71,18 +69,8 @@ export default function SupportPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <header className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 py-6">
-          <nav className="flex justify-between items-center">
-            <Image src="/logo.svg" alt="NovaLearn Logo" width={150} height={40} />
-            <div className="space-x-4">
-              <Link href="/courses" className="text-blue-600 hover:text-blue-800">Courses</Link>
-              <Link href="/teachers" className="text-blue-600 hover:text-blue-800">Teachers</Link>
-              <Button asChild><Link href="/signup">Get Started</Link></Button>
-            </div>
-          </nav>
-        </div>
-      </header>
+      {/* Inject Dynamic Header Component */}
+      <DynamicHeader/>
 
       <main className="container mx-auto px-4 py-12">
         <section className="text-center mb-16">
@@ -133,21 +121,8 @@ export default function SupportPage() {
         </section>
       </main>
 
-      <footer className="bg-gray-100 mt-16">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex justify-between items-center">
-            <p>&copy; 2023 NovaLearn. All rights reserved.</p>
-            <div className="space-x-4">
-              <Link href="/privacy" className="text-gray-600 hover:text-gray-800">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="text-gray-600 hover:text-gray-800">
-                Terms of Service
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* Inject Footer Component */}
+      <Footer/>
     </div>
   )
 }

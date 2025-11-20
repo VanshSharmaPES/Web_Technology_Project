@@ -92,7 +92,7 @@ export default function ProfilePage() {
                     </AvatarFallback>
                   </Avatar>
                   <h2 className="text-xl font-bold">{user.username}</h2>
-                  <p className="text-sm text-muted-foreground mb-4">{user.account_type}</p>
+                  <p className="text-sm text-muted-foreground mb-4 capitalize">{user.account_type}</p>
                   
                   <div className="flex items-center gap-2 mb-2">
                     <Badge variant="secondary" className="capitalize">

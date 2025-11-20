@@ -1,25 +1,16 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { BookOpen, Users, Star, BarChart2, Calendar, Award, Globe, Clock, Shield } from 'lucide-react'
+import { Header } from '@/components/header-loggedin'
+import { Footer } from '@/components/footer'
 
-export default function AboutPage() {
+export default function FeaturePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <header className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 py-6">
-          <nav className="flex justify-between items-center">
-            <Image src="/logo.svg" alt="NovaLearn Logo" width={150} height={40} />
-            <div className="space-x-4">
-              <Link href="/courses" className="text-blue-600 hover:text-blue-800">Courses</Link>
-              <Link href="/teachers" className="text-blue-600 hover:text-blue-800">Teachers</Link>
-              <Button asChild><Link href="/signup">Get Started</Link></Button>
-            </div>
-          </nav>
-        </div>
-      </header>
+      {/* Replaced hardcoded header with dynamic Header component */}
+      <Header/>
 
       <main className="container mx-auto px-4 py-12">
         <section className="text-center mb-16">
@@ -109,17 +100,8 @@ export default function AboutPage() {
         </section>
       </main>
 
-      <footer className="bg-gray-100 mt-16">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex justify-between items-center">
-            <p>&copy; 2023 NovaLearn. All rights reserved.</p>
-            <div className="space-x-4">
-              <Link href="/privacy" className="text-gray-600 hover:text-gray-800">Privacy Policy</Link>
-              <Link href="/terms" className="text-gray-600 hover:text-gray-800">Terms of Service</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* Replaced hardcoded footer with dynamic Footer component */}
+      <Footer/>
     </div>
   )
 }
@@ -147,4 +129,3 @@ function FeatureCard({ icon, title, description }: { icon: React.ReactNode; titl
       </div>
     );
   }
-  

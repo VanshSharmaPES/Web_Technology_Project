@@ -1,11 +1,14 @@
-// import Image from 'next/image'
+// frontend/app/resources/page.tsx
+
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Book, PenToolIcon as Tool, HelpCircle, FileText } from 'lucide-react'
-import { Header } from '@/components/header-loggedin'
+// Renamed the import to avoid collision or confusion with a generic 'Header'
+import { Header as DynamicHeader } from '@/components/header-loggedin'
 import { Footer } from '@/components/footer'
+
 export default function ResourcePage() {
   const resources = [
     {
@@ -27,7 +30,7 @@ export default function ResourcePage() {
     {
       category: "General Resources",
       items: [
-        { title: "FAQs", icon: <HelpCircle className="h-6 w-6" />, description: "Find answers to common questions about using Academy X." },
+        { title: "FAQs", icon: <HelpCircle className="h-6 w-6" />, description: "Find answers to common questions about using NovaLearn." },
         { title: "Tutorials", icon: <FileText className="h-6 w-6" />, description: "Step-by-step video guides for navigating the platform." },
         { title: "Support", icon: <HelpCircle className="h-6 w-6" />, description: "24/7 support through live chat or ticket submission." },
         { title: "Policies", icon: <FileText className="h-6 w-6" />, description: "Review our terms of service, privacy policy, and guidelines." },
@@ -37,9 +40,10 @@ export default function ResourcePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <Header/>
+      {/* Use the dynamically imported header */}
+      <DynamicHeader/>
     
-      <main className="container mx-auto px-4 py-12">
+      <main className="flex-grow container mx-auto px-4 py-12">
         <section className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4">Resources</h1>
           <p className="text-xl text-gray-600 mb-8">
@@ -102,7 +106,9 @@ export default function ResourcePage() {
           </Button>
         </section>
       </main>
-<Footer/>
+      
+      {/* Inject Footer Component */}
+      <Footer/>
     </div>
   )
 }
