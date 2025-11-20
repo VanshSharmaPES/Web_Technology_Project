@@ -97,7 +97,7 @@ export default function ForgotPassword() {
       <main className="flex-grow flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md">
           <div className="bg-white shadow-md rounded-lg px-8 py-10">
-            <h1 className="text-2xl font-bold text-center mb-6">ACADEMYX</h1>
+            <h1 className="text-2xl font-bold text-center mb-6">NovaLearn</h1>
             
             {!isEmailSent ? (
               // Step 1: Email input form

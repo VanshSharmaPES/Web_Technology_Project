@@ -8,7 +8,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           <div className="lg:col-span-2">
             <Link href="/" className="text-2xl font-bold text-primary">
-              ACADEMYX
+              NovaLearn
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
               A website where teacher is anybody with skill

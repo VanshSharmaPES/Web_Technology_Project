@@ -52,7 +52,7 @@ export default function SignUpPage() {
 
       toast({
         title: 'Account Created!',
-        description: `Welcome to AcademyX, ${user.username}.`,
+        description: `Welcome to NovaLearn, ${user.username}.`,
         variant: 'default',
       });
 

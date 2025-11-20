@@ -23,7 +23,7 @@ export default function Home() {
                   🚀 New courses added weekly
                 </Badge>
                 <h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
-                  Unlock Your Potential with <span className="text-primary">AcademyX</span>
+                  Unlock Your Potential with <span className="text-primary">NovaLearn</span>
                 </h1>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0">
                   Master in-demand skills with our expert-led courses. Join a community of ambitious learners and transform your career today.
@@ -73,7 +73,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-8">
-                <h2 className="text-3xl lg:text-4xl font-bold">Why Choose AcademyX?</h2>
+                <h2 className="text-3xl lg:text-4xl font-bold">Why Choose NovaLearn?</h2>
                 <div className="space-y-6">
                   {[
                     { title: "Expert Instructors", desc: "Learn from industry professionals with real-world experience." },
@@ -112,7 +112,7 @@ export default function Home() {
           <div className="container mx-auto px-4 text-center max-w-3xl">
             <h2 className="text-3xl lg:text-4xl font-bold mb-6">Ready to Start Your Learning Journey?</h2>
             <p className="text-primary-foreground/80 text-lg mb-10">
-              Join thousands of students already learning on AcademyX. Sign up today and get unlimited access to all courses.
+              Join thousands of students already learning on NovaLearn. Sign up today and get unlimited access to all courses.
             </p>
             <Button size="lg" variant="secondary" className="h-14 px-8 text-lg" asChild>
               <Link href="/signup">Get Started for Free</Link>

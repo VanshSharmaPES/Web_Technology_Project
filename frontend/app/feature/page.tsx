@@ -11,7 +11,7 @@ export default function AboutPage() {
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-6">
           <nav className="flex justify-between items-center">
-            <Image src="/logo.svg" alt="AcademyX Logo" width={150} height={40} />
+            <Image src="/logo.svg" alt="NovaLearn Logo" width={150} height={40} />
             <div className="space-x-4">
               <Link href="/courses" className="text-blue-600 hover:text-blue-800">Courses</Link>
               <Link href="/teachers" className="text-blue-600 hover:text-blue-800">Teachers</Link>
@@ -23,7 +23,7 @@ export default function AboutPage() {
 
       <main className="container mx-auto px-4 py-12">
         <section className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-4">Discover AcademyX Features</h1>
+          <h1 className="text-4xl font-bold mb-4">Discover NovaLearn Features</h1>
           <p className="text-xl text-gray-600 mb-8">Revolutionizing online education with cutting-edge features for students and educators</p>
           <Button size="lg" asChild><Link href="/signup">Join Our Community</Link></Button>
         </section>
@@ -65,7 +65,7 @@ export default function AboutPage() {
         </section>
 
         <section className="mb-16">
-          <h2 className="text-3xl font-semibold mb-8 text-center">Why Choose AcademyX?</h2>
+          <h2 className="text-3xl font-semibold mb-8 text-center">Why Choose NovaLearn?</h2>
           <Tabs defaultValue="students" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="students">For Students</TabsTrigger>
@@ -75,7 +75,7 @@ export default function AboutPage() {
               <Card>
                 <CardHeader>
                   <CardTitle>Empower Your Learning Journey</CardTitle>
-                  <CardDescription>Discover the benefits of learning with AcademyX</CardDescription>
+                  <CardDescription>Discover the benefits of learning with NovaLearn</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <BenefitItem icon={<Globe className="h-5 w-5" />} text="Access courses anytime, anywhere" />
@@ -89,7 +89,7 @@ export default function AboutPage() {
               <Card>
                 <CardHeader>
                   <CardTitle>Share Your Expertise</CardTitle>
-                  <CardDescription>Discover the benefits of teaching on AcademyX</CardDescription>
+                  <CardDescription>Discover the benefits of teaching on NovaLearn</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <BenefitItem icon={<Globe className="h-5 w-5" />} text="Reach a global audience of eager learners" />
@@ -104,7 +104,7 @@ export default function AboutPage() {
 
         <section className="text-center">
           <h2 className="text-3xl font-semibold mb-4">Experience the Future of Online Learning</h2>
-          <p className="text-xl text-gray-600 mb-8">Join the AcademyX community and unlock your full potential today!</p>
+          <p className="text-xl text-gray-600 mb-8">Join the NovaLearn community and unlock your full potential today!</p>
           <Button size="lg" asChild><Link href="/signup">Explore Features</Link></Button>
         </section>
       </main>
@@ -112,7 +112,7 @@ export default function AboutPage() {
       <footer className="bg-gray-100 mt-16">
         <div className="container mx-auto px-4 py-8">
           <div className="flex justify-between items-center">
-            <p>&copy; 2023 AcademyX. All rights reserved.</p>
+            <p>&copy; 2023 NovaLearn. All rights reserved.</p>
             <div className="space-x-4">
               <Link href="/privacy" className="text-gray-600 hover:text-gray-800">Privacy Policy</Link>
               <Link href="/terms" className="text-gray-600 hover:text-gray-800">Terms of Service</Link>

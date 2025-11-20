@@ -73,7 +73,7 @@ export default function LoginPage() {
     <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900">
       <Card className="w-[380px]">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold">Sign in to AcademyX</CardTitle>
+          <CardTitle className="text-2xl font-bold">Sign in to NovaLearn</CardTitle>
           <CardDescription>
             Enter your email and password below to access your account.
           </CardDescription>

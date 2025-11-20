@@ -41,7 +41,7 @@ export default function AboutPage() {
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-6">
           <nav className="flex justify-between items-center">
-            <Image src="/logo.svg" alt="AcademyX Logo" width={150} height={40} />
+            <Image src="/logo.svg" alt="NovaLearn Logo" width={150} height={40} />
             <div className="space-x-4">
               <Link href="/courses" className="text-blue-600 hover:text-blue-800">Courses</Link>
               <Link href="/teachers" className="text-blue-600 hover:text-blue-800">Teachers</Link>
@@ -106,7 +106,7 @@ export default function AboutPage() {
       <footer className="bg-gray-100 mt-16">
         <div className="container mx-auto px-4 py-8">
           <div className="flex justify-between items-center">
-            <p>&copy; 2023 AcademyX. All rights reserved.</p>
+            <p>&copy; 2023 NovaLearn. All rights reserved.</p>
             <div className="space-x-4">
               <Link href="/privacy" className="text-gray-600 hover:text-gray-800">
                 Privacy Policy
