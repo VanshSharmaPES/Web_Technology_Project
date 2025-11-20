@@ -1,11 +1,8 @@
-// frontend/app/resources/page.tsx
-
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Book, PenToolIcon as Tool, HelpCircle, FileText } from 'lucide-react'
-// Renamed the import to avoid collision or confusion with a generic 'Header'
 import { Header as DynamicHeader } from '@/components/header-loggedin'
 import { Footer } from '@/components/footer'
 
@@ -39,8 +36,8 @@ export default function ResourcePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      {/* Use the dynamically imported header */}
+    // FIX APPLIED: Removed conflicting gradient class and set explicit theme-aware backgrounds.
+    <div className="min-h-screen bg-white dark:bg-neutral-950">
       <DynamicHeader/>
     
       <main className="flex-grow container mx-auto px-4 py-12">
@@ -57,7 +54,7 @@ export default function ResourcePage() {
             <TabsTrigger value="For Educators">For Educators</TabsTrigger>
             <TabsTrigger value="General Resources">General Resources</TabsTrigger>
           </TabsList>
-          {resources.map((category) => (
+            {resources.map((category) => (
             <TabsContent key={category.category} value={category.category}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.items.map((item) => (
@@ -107,7 +104,6 @@ export default function ResourcePage() {
         </section>
       </main>
       
-      {/* Inject Footer Component */}
       <Footer/>
     </div>
   )

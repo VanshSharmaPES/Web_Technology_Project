@@ -8,8 +8,9 @@ import { Footer } from '@/components/footer'
 
 export default function FeaturePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      {/* Replaced hardcoded header with dynamic Header component */}
+    // FIX APPLIED: Set theme-aware backgrounds: bg-white for light, dark:bg-neutral-950 for dark
+    <div className="min-h-screen bg-white dark:bg-neutral-950">
+      {/* Dynamic Header */}
       <Header/>
 
       <main className="container mx-auto px-4 py-12">
@@ -100,7 +101,7 @@ export default function FeaturePage() {
         </section>
       </main>
 
-      {/* Replaced hardcoded footer with dynamic Footer component */}
+      {/* Dynamic Footer */}
       <Footer/>
     </div>
   )

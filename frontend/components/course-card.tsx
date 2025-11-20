@@ -18,6 +18,7 @@ export interface CourseCardProps {
   instructor: Instructor;
   completion?: number; // Optional
   rating?: number;     // Optional
+  videoUrl?: string;   // <--- NEW: Optional external link
 }
 
 export function CourseCard({
@@ -28,10 +29,16 @@ export function CourseCard({
   instructor,
   completion,
   rating,
+  videoUrl, // <--- NEW: Destructure videoUrl
 }: CourseCardProps) {
   
+  // Use videoUrl for href if available, otherwise default to internal course page.
+  const href = videoUrl || `/courses/${id}`;
+  const target = videoUrl ? "_blank" : undefined;
+
   return (
-    <Link href={`/courses/${id}`}>
+    // Updated Link to use videoUrl and target if present
+    <Link href={href} target={target}>
       <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
         <div className="aspect-video relative bg-muted">
           <Image

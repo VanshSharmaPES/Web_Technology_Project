@@ -14,25 +14,13 @@ export function Footer() {
               A website where teacher is anybody with skill
             </p>
             <div className="flex space-x-4 mt-6">
-              <Link href="https://github.com" className="text-muted-foreground hover:text-primary">
+              <Link href="https://github.com/VanshSharmaPES/Web_Technology_Project" className="text-muted-foreground hover:text-primary">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </Link>
-              <Link href="https://facebook.com" className="text-muted-foreground hover:text-primary">
-                <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </Link>
-              <Link href="https://linkedin.com" className="text-muted-foreground hover:text-primary">
+              <Link href="https://www.linkedin.com/in/vansh-sharma-6b675b354/" className="text-muted-foreground hover:text-primary">
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
-              </Link>
-              <Link href="https://twitter.com" className="text-muted-foreground hover:text-primary">
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link href="https://instagram.com" className="text-muted-foreground hover:text-primary">
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
               </Link>
             </div>
           </div>
@@ -48,13 +36,6 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li><Link href="/blog" className="text-muted-foreground hover:text-primary">Blog</Link></li>
               <li><Link href="/support" className="text-muted-foreground hover:text-primary">Support</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-3">Teachers</h3>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="#" className="text-muted-foreground hover:text-primary">Students</Link></li>
-              <li><Link href="#" className="text-muted-foreground hover:text-primary">Link 4</Link></li>
             </ul>
           </div>
           <div>

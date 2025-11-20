@@ -17,36 +17,38 @@ interface Course {
   rating?: number;
   completion?: number;
   number_of_videos?: number;
+  videoUrl?: string; 
 }
 
 const API_URL = "http://localhost:5000/api/courses";
 
-// Updated static courses with local images
 const STATIC_COURSES: Course[] = [
   {
     _id: "static-1",
-    title: "Complete Full Stack Developer Bootcamp 2024",
-    thumbnail: "html5.jpeg", // Using your uploaded html5 image
-    tags: ["Web Development", "React", "Node.js"],
-    instructor: { name: "John Doe", avatar: "" },
+    title: "Complete HTML5 Website Project for Beginners",
+    thumbnail: "html5.jpeg", 
+    tags: ["Web Development", "HTML", "Beginner"],
+    instructor: { name: "Dave Gray", avatar: "" },
     rating: 4.9,
-    // completion is omitted here, so the bar won't show
+    videoUrl: "https://youtu.be/P0EGYTb1cBs"
   },
   {
     _id: "static-2",
-    title: "Python for Data Science and Machine Learning",
-    thumbnail: "Picture1.png", // Using your uploaded Picture1
-    tags: ["Data Science", "Python", "ML"],
-    instructor: { name: "Jane Smith", avatar: "" },
+    title: "Trees: Introduction to Data Structures",
+    thumbnail: "Picture1.png", 
+    tags: ["Data Science", "DSA", "Trees"],
+    instructor: { name: "Code with Harry", avatar: "" },
     rating: 4.8,
+    videoUrl: "https://youtu.be/oI0QhFzBSRo"
   },
   {
     _id: "static-3",
-    title: "The Ultimate Digital Marketing Course",
-    thumbnail: "Picture2.png", // Using your uploaded Picture2
-    tags: ["Marketing", "SEO", "Social Media"],
-    instructor: { name: "Mike Johnson", avatar: "" },
+    title: "Binary Tree in Data Structures - DSA Course",
+    thumbnail: "Picture2.png", 
+    tags: ["DSA", "Data Structures", "C++"],
+    instructor: { name: "Code with Harry", avatar: "" },
     rating: 4.7,
+    videoUrl: "https://youtu.be/j8b4ZnZefBo"
   }
 ];
 
@@ -97,6 +99,7 @@ export default function ExplorePage() {
                     tags={course.tags}
                     instructor={course.instructor}
                     rating={course.rating}
+                    videoUrl={course.videoUrl} // Pass the video URL
                     // completion prop is intentionally NOT passed here
                     // to prevent the progress bar from showing.
                 />
