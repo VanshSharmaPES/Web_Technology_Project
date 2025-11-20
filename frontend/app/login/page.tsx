@@ -44,9 +44,9 @@ export default function LoginPage() {
         variant: 'default',
       });
 
-      // Force redirect
+      // FIX APPLIED: Redirects all successful logins directly to /dashboard
       if (typeof window !== 'undefined') {
-          window.location.replace('/main');
+          window.location.replace('/dashboard');
       }
 
     } catch (error: any) {
@@ -70,7 +70,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="flex items-center justify-center min-h-screen bg-background dark:bg-neutral-950">
       <Card className="w-[380px]">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold">Sign in to NovaLearn</CardTitle>

@@ -73,7 +73,8 @@ export default function ProfilePage() {
   if (!user) return null;
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
+    // FIX APPLIED: Set theme-aware background using the Tailwind utility classes.
+    <div className="flex flex-col min-h-screen bg-background dark:bg-neutral-950">
       <Header />
       
       <main className="flex-grow container mx-auto px-4 py-12">
@@ -92,6 +93,7 @@ export default function ProfilePage() {
                     </AvatarFallback>
                   </Avatar>
                   <h2 className="text-xl font-bold">{user.username}</h2>
+                  {/* FIX: Added capitalize class for consistent text case */}
                   <p className="text-sm text-muted-foreground mb-4 capitalize">{user.account_type}</p>
                   
                   <div className="flex items-center gap-2 mb-2">

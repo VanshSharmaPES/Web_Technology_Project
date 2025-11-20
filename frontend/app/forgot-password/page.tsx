@@ -1,34 +1,38 @@
+// frontend/app/forgot-password/page.tsx
+
 'use client';
 
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Header } from '@/components/header';
+import { Header as DynamicHeader } from '@/components/header-loggedin';
 import { Footer } from '@/components/footer';
-import { auth, sendPasswordResetEmail, verifyPasswordResetCode, confirmPasswordReset } from '@/lib/firebase'; // Import Firebase functions
+// REMOVED: Firebase imports
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from '@/components/ui/input-otp'; // Import OTP components
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from '@/components/ui/input-otp';
+import axios from 'axios'; // ADDED: axios import
+
+const API_BASE_URL = 'http://localhost:5000'; 
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
-  const [otp, setOtp] = useState('');
+  const [otp, setOtp] = useState(''); // Token code from console
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isEmailSent, setIsEmailSent] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isOtpValid, setIsOtpValid] = useState(false);
+  const [isTokenValid, setIsTokenValid] = useState(false);
   const [passwordReset, setPasswordReset] = useState(false);
   const router = useRouter();
 
-  // Step 1: Send OTP to the email
-  const handleSendOtp = async (e: React.FormEvent) => {
+  // Step 1: Send request to backend to generate token
+  const handleSendTokenRequest = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
 
-    // Validate email format
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setError('Please enter a valid email address');
       setIsLoading(false);
@@ -36,38 +40,36 @@ export default function ForgotPassword() {
     }
 
     try {
-      await sendPasswordResetEmail(auth, email); // Send OTP via Firebase email
-      setIsEmailSent(true); // OTP has been sent
+      // API call to Express backend to generate the token
+      await axios.post(`${API_BASE_URL}/api/auth/forgot-password`, { email });
+      
+      setIsEmailSent(true); 
     } catch (err: any) {
-      setError('Failed to send OTP. Please check your email.');
-      console.error(err);
+      let errorMessage = 'Failed to send reset code request. Please check your network connection.';
+      if (axios.isAxiosError(err) && err.response) {
+        errorMessage = err.response.data.message || errorMessage;
+      }
+      setError(errorMessage);
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Step 2: Verify the OTP
-  const handleVerifyOtp = async (e: React.FormEvent) => {
+  // Step 2: Validate token format and move to password form
+  const handleVerifyToken = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-    setError('');
-
-    try {
-      // Firebase verification of the OTP
-      const emailAddress = await verifyPasswordResetCode(auth, otp); // Verify OTP
-      setIsOtpValid(true); // OTP verified
-
-      // Prompt user to reset the password
-      setPasswordReset(true);
-    } catch (err: any) {
-      setError('Invalid OTP. Please try again.');
-      console.error(err);
-    } finally {
-      setIsLoading(false);
+    // Since the actual token validation is done in the next step on the server, 
+    // we only check local format here.
+    if (otp.length !== 6) {
+        setError('Please enter the 6-digit code from your console.');
+        return;
     }
+    
+    setIsTokenValid(true); 
+    setPasswordReset(true);
   };
 
-  // Step 3: Reset the password
+  // Step 3: Reset the password (sends token, email, and new password to backend)
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -80,12 +82,20 @@ export default function ForgotPassword() {
     }
 
     try {
-      // Reset the password in Firebase
-      await confirmPasswordReset(auth, otp, newPassword);
-      router.push('/login'); // Redirect to login page after password reset
+        // API call to Express backend to validate token and update password
+        await axios.post(`${API_BASE_URL}/api/auth/reset-password`, {
+            email,
+            token: otp, 
+            newPassword,
+        });
+
+      router.push('/login'); 
     } catch (err: any) {
-      setError('Failed to reset password. Please try again.');
-      console.error(err);
+      let errorMessage = 'Failed to reset password. Code may be invalid or expired.';
+      if (axios.isAxiosError(err) && err.response) {
+        errorMessage = err.response.data.message || errorMessage;
+      }
+      setError(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -93,15 +103,15 @@ export default function ForgotPassword() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-grow flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <DynamicHeader />
+      <main className="flex-grow flex items-center justify-center bg-background dark:bg-neutral-950 py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md">
           <div className="bg-white shadow-md rounded-lg px-8 py-10">
-            <h1 className="text-2xl font-bold text-center mb-6">NovaLearn</h1>
+            <h1 className="text-2xl font-bold text-center mb-6">NOVALEARN</h1>
             
             {!isEmailSent ? (
               // Step 1: Email input form
-              <form onSubmit={handleSendOtp} className="space-y-6">
+              <form onSubmit={handleSendTokenRequest} className="space-y-6"> 
                 <div>
                   <Input
                     type="email"
@@ -113,13 +123,14 @@ export default function ForgotPassword() {
                   />
                 </div>
                 {error && <p className="text-red-500 text-sm">{error}</p>}
-                <Button className="w-full bg-black text-white hover:bg-gray-800" disabled={isLoading}>
-                  {isLoading ? 'Sending OTP...' : 'Get OTP'}
+                <Button type="submit" className="w-full bg-black text-white hover:bg-gray-800" disabled={isLoading}>
+                  {isLoading ? 'Sending Request...' : 'Get Reset Code'}
                 </Button>
               </form>
-            ) : !isOtpValid ? (
-              // Step 2: OTP input form using shadcn OTP component
-              <form onSubmit={handleVerifyOtp} className="space-y-6">
+            ) : !isTokenValid ? (
+              // Step 2: Token (OTP) input form 
+              <form onSubmit={handleVerifyToken} className="space-y-6">
+                <p className="text-sm text-center text-muted-foreground">A password reset code has been generated. Check your **backend console** for the 6-digit code.</p>
                 <div>
                   <InputOTP maxLength={6} value={otp} onChange={(value) => setOtp(value)}>
                     <InputOTPGroup>
@@ -129,10 +140,13 @@ export default function ForgotPassword() {
                     </InputOTPGroup>
                     <InputOTPSeparator />
                   </InputOTP>
+                  <p className="text-xs mt-2 text-center text-muted-foreground">
+                      Enter the six-digit code printed in your server log.
+                  </p>
                 </div>
                 {error && <p className="text-red-500 text-sm">{error}</p>}
-                <Button className="w-full bg-black text-white hover:bg-gray-800" disabled={isLoading}>
-                  {isLoading ? 'Verifying OTP...' : 'Verify OTP'}
+                <Button type="submit" className="w-full bg-black text-white hover:bg-gray-800" disabled={isLoading}>
+                  {isLoading ? 'Verifying Code...' : 'Verify Code'}
                 </Button>
               </form>
             ) : passwordReset ? (
@@ -159,7 +173,7 @@ export default function ForgotPassword() {
                   />
                 </div>
                 {error && <p className="text-red-500 text-sm">{error}</p>}
-                <Button className="w-full bg-black text-white hover:bg-gray-800" disabled={isLoading}>
+                <Button type="submit" className="w-full bg-black text-white hover:bg-gray-800" disabled={isLoading}>
                   {isLoading ? 'Resetting Password...' : 'Reset Password'}
                 </Button>
               </form>
