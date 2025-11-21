@@ -47,7 +47,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>© 2024 — 2034</p>
+          <p>© 2025 — 2034</p>
         </div>
       </div>
     </footer>
