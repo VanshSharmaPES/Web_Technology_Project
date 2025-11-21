@@ -68,7 +68,7 @@ export default function SupportPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen bg-background dark:bg-neutral-950">
       {/* Inject Dynamic Header Component */}
       <DynamicHeader/>
 
