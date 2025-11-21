@@ -1,3 +1,5 @@
+// frontend/app/contact/page.tsx
+
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Header as DynamicHeader } from '@/components/header-loggedin'
@@ -5,7 +7,8 @@ import { Footer } from '@/components/footer'
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    // FIX: Replaced gradient class with theme-aware background classes
+    <div className="min-h-screen bg-background dark:bg-neutral-950">
       <DynamicHeader />
       <main className="container mx-auto px-4 py-16 flex-grow">
         <div className="max-w-xl mx-auto text-center">
