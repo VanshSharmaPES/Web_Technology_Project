@@ -19,7 +19,7 @@ export default function ContactPage() {
           
           <div className="space-y-4">
             <Button size="lg" asChild>
-              <a href="mailto:vanshsharma2006asr@gmail.com">Send an Email</a>
+              <a href="mailto:vanshsharma2006asr@gmail.com, vaibhavtulsian@gmail.com">Send an Email</a>
             </Button>
             <p className="text-sm text-muted-foreground">
               <Link href="/resources" className="underline">
